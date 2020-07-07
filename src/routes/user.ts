@@ -1,12 +1,13 @@
 import {Express} from "express";
 import UserController from '../controllers/UserController';
+import authMiddleware from "../middlewares/auth"
 const controller= new UserController(); 
 const url='/user';    
 
 export const userRoute=(app:Express)=>{     
     app.route(url)
         .post(controller.add)
-        .get(controller.get)
+        .get(authMiddleware,controller.get)
         .put(controller.update)
 
     app.route(`${url}/email/:email`)
