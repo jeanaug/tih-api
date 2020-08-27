@@ -1,0 +1,1 @@
+mongoimport --db=test --type=csv --headerline  --file=Clientes_09072020080227.txt
